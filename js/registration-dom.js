@@ -25,7 +25,7 @@
       displayElem.innerHTML = "Enter a valid registration number";
     }
   }
-
+ 
   addBtnElem.addEventListener('click', function(){
     displayRegistration();
   });
@@ -37,7 +37,7 @@
 
   window.addEventListener('load', function(){
     var loadMap = callFactory.regMap();
-  
+
     for (var i = 0; i < loadMap.length; i++) {
       regCreate(loadMap[i])
     }

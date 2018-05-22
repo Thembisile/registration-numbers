@@ -15,10 +15,10 @@ function RegistrationFactory(stored){
     if (mapOfReg[reg] === undefined) {
       for (var i = 0; i < listOfRegs.length; i++) {
         if (reg.startsWith(listOfRegs[i])) {
-  
+
           mapOfReg[reg] = 0;
           return true;
-        }
+        } 
       }
     }
   }

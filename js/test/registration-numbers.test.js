@@ -22,7 +22,7 @@ describe('Test Registration Numbers Widget', function(){
   it('should return true if town matches given prefix for Paarl', function(){
     var callReg = RegistrationFactory();
 
-    assert.equal(callReg.addReg('CJ 8457'), true)
+    assert.equal(callReg.addReg('CJ 8457'), true);
   })
   it('should return false if registration is from another town and not from selected towns', function(){
     var callReg = RegistrationFactory();
