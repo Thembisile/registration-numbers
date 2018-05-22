@@ -9,7 +9,7 @@ function RegistrationFactory(stored){
     }
   }
 
- function additionReg(reg){
+  function additionReg(reg){
   var listOfRegs = [ 'CA ', 'CJ ', 'CX ', 'CY ', 'CAW ']
 
     if (mapOfReg[reg] === undefined) {
@@ -18,7 +18,7 @@ function RegistrationFactory(stored){
 
           mapOfReg[reg] = 0;
           return true;
-        } 
+        }
       }
     }
   }
@@ -27,7 +27,7 @@ function RegistrationFactory(stored){
     return registry;
   }
 
-  function selectTown(town){
+  function filterByTown(town){
 
     var registrationNums = Object.keys(mapOfReg);
 
@@ -36,7 +36,7 @@ function RegistrationFactory(stored){
     }
     var filterTown = registrationNums.filter(function(Num, storedNum){
 
-    return registrationNums.startsWith(town)
+    return Num.startsWith(town)
     });
     location.hash = town;
 
@@ -52,7 +52,7 @@ function RegistrationFactory(stored){
   return {
     additionReg,
     getRegistry,
-    selectTown,
-    regMap,
+    filterByTown,
+    regMap
   }
 }

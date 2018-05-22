@@ -10,7 +10,7 @@
   function regCreate(registration){
     var createList = document.createElement('li');
     createList.textContent = registration;
-    displayElem.appendChild(createList)
+    displayElem.appendChild(createList);
   }
 
   function displayRegistration(){
@@ -25,7 +25,7 @@
       displayElem.innerHTML = "Enter a valid registration number";
     }
   }
- 
+
   addBtnElem.addEventListener('click', function(){
     displayRegistration();
   });
@@ -44,7 +44,7 @@
   });
 
   townSelect.addEventListener('change', function(){
-    var selectValue = callFactory.selectTown(townSelect.value);
+    var selectValue = callFactory.filterByTown(townSelect.value);
 
     if (selectValue.length > 0) {
       for (var i = 0; i < selectValue.length; i++) {
