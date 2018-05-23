@@ -10,7 +10,7 @@ function RegistrationFactory(stored){
   }
 
   function additionReg(reg){
-  var listOfRegs = [ 'CA ', 'CJ ', 'CX ', 'CY ', 'CAW ']
+    var listOfRegs = [ 'CA ', 'CJ ', 'CY ', 'CAW ']
 
     if (mapOfReg[reg] === undefined) {
       for (var i = 0; i < listOfRegs.length; i++) {
@@ -20,6 +20,7 @@ function RegistrationFactory(stored){
           return true;
         }
       }
+      return false;
     }
   }
 
@@ -36,7 +37,7 @@ function RegistrationFactory(stored){
     }
     var filterTown = registrationNums.filter(function(Num, storedNum){
 
-    return Num.startsWith(town)
+      return Num.startsWith(town)
     });
     location.hash = town;
 
@@ -45,9 +46,7 @@ function RegistrationFactory(stored){
 
   function regMap() {
     return Object.keys(mapOfReg);
-    }
-
-
+  }
 
   return {
     additionReg,
