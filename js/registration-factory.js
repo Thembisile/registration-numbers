@@ -46,7 +46,7 @@ function RegistrationFactory(stored){
 
   function regMap() {
     return Object.keys(mapOfReg);
-  }
+  } 
 
   return {
     additionReg,

@@ -35,7 +35,7 @@ clearButton.addEventListener('click', function(){
   displayElem.innerHTML = '';
   localStorage.clear();
 })
-
+ 
 window.addEventListener('load', function(){
   var loadMap = callFactory.regMap();
 

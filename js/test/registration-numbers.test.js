@@ -32,5 +32,5 @@ describe('Test Registration Numbers Widget', function(){
     callReg.additionReg(['CA']);
 
     assert.equal(true, callReg.getRegistry());
-  })
+  }) 
 });
