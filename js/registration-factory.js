@@ -11,7 +11,7 @@ function RegistrationFactory(stored){
   }
 
   function additionReg(reg){
-    var listOfRegs = [ 'CA ', 'CJ ', 'CY ', 'CL ']
+    var listOfRegs = [ 'CA ', 'CJ ', 'CY ', 'CAW ']
 
     if (reg != ''){
       if (mapOfReg[reg] === undefined) {

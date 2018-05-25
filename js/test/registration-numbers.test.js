@@ -12,7 +12,7 @@ describe('Registration Numbers', function(){
   it('should return true if town matches given prefix for George', function(){
     var callReg = RegistrationFactory();
 
-    assert.equal(callReg.additionReg('CL 8745'), true)
+    assert.equal(callReg.additionReg('CAW 8745'), true)
   });
   it('should return true if town matches given prefix for Paarl', function(){
     var callReg = RegistrationFactory();
@@ -34,45 +34,45 @@ describe('Filtering registration for Selected Town', function(){
     var callReg3 = RegistrationFactory();
 
     callReg.filterByTown("CA ");
-    callReg2.filterByTown("CL ");
+    callReg2.filterByTown("CAW ");
     callReg3.filterByTown("CJ ");
 
     assert.equal(true, callReg.additionReg('CA 1234'));
-    assert.equal(true, callReg2.additionReg('CL 125'));
+    assert.equal(true, callReg2.additionReg('CAW 125'));
     assert.equal(true, callReg3 .additionReg('CJ 87945'));
   });
   it('should return all registration numbers when filtering "ALL" ', function(){
     var callReg =RegistrationFactory();
 
     callReg.additionReg('CA 123');
-    callReg.additionReg('CL 123');
+    callReg.additionReg('CAW 123');
     callReg.additionReg('CY 123');
     callReg.additionReg('CJ 123');
 
-    assert.deepEqual(callReg.filterByTown('All'), ['CA 123', 'CL 123', 'CY 123', 'CJ 123'])
+    assert.deepEqual(callReg.filterByTown('All'), ['CA 123', 'CAW 123', 'CY 123', 'CJ 123'])
   });
-  it('should return CJ registrations only, if filtered for Paarl, and CL registrations if filtered for George', function(){
+  it('should return CJ registrations only, if filtered for Paarl, and CAW registrations if filtered for George', function(){
     var callReg = RegistrationFactory();
 
     callReg.additionReg("CJ 1235");
-    callReg.additionReg("CL 2659");
+    callReg.additionReg("CAW 2659");
 
     var callReg2 = RegistrationFactory();
 
-    callReg2.additionReg('CL 123');
+    callReg2.additionReg('CAW 123');
     callReg2.additionReg('CY 541')
 
     assert.deepEqual(callReg.filterByTown('CJ '), ['CJ 1235']);
-    assert.deepEqual(callReg2.filterByTown('CL '), ['CL 123'])
+    assert.deepEqual(callReg2.filterByTown('CAW '), ['CAW 123'])
   })
   it('should return filtered registration for George', function(){
     var callReg2 = RegistrationFactory();
 
-    callReg2.additionReg('CL 123');
+    callReg2.additionReg('CAW 123');
     callReg2.additionReg('CA 123');
-    callReg2.additionReg('CL 321');
+    callReg2.additionReg('CAW 321');
 
-    assert.deepEqual(callReg2.filterByTown("CL "), ['CL 123', 'CL 321'])
+    assert.deepEqual(callReg2.filterByTown("CAW "), ['CAW 123', 'CAW 321'])
   })
 });
 describe('Mapping of Registrations numbers', function(){
@@ -91,6 +91,14 @@ describe('Mapping of Registrations numbers', function(){
     assert.deepEqual(['CA 123'], callReg.regMap());
     assert.deepEqual(['CY 123', 'CY 321'], callReg2.regMap());
   });
+  it('should map registrations from CA only', function(){
+    var callReg = RegistrationFactory()
+
+    callReg.additionReg("CA 123")
+    callReg.additionReg("CZ 123")
+
+    assert.deepEqual(callReg.regMap(), ['CA 123'])
+  });
 });
 describe('Initializing Map Registration Numbers', function(){
   it('should return initialized map of registrations', function(){
@@ -98,12 +106,12 @@ describe('Initializing Map Registration Numbers', function(){
     var callReg = RegistrationFactory(['CA 123',
       'CY 321',
       'CJ 451',
-      'CL 4123']);
+      'CAW 4123']);
 
     assert.deepEqual(callReg.regMap(), ['CA 123',
       'CY 321',
       'CJ 451',
-      'CL 4123'])
+      'CAW 4123'])
   })
   it('should return the registration of initialized map passed into constructing function', function(){
     var callReg = RegistrationFactory({'CA 123' : 0});
