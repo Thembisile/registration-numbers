@@ -4,17 +4,17 @@ describe('Registration Numbers', function(){
 
     assert.equal(callReg.additionReg('CA 9870'), true);
   });
-  it('should return true if town matches given prefix for Bellville', function(){
+  it('should return true if registration matches given prefix for Bellville', function(){
     var callReg = RegistrationFactory();
 
     assert.equal(callReg.additionReg('CY 1254'), true);
   });
-  it('should return true if town matches given prefix for George', function(){
+  it('should return true if registration matches given prefix for George', function(){
     var callReg = RegistrationFactory();
 
     assert.equal(callReg.additionReg('CAW 8745'), true)
   });
-  it('should return true if town matches given prefix for Paarl', function(){
+  it('should return true if registration matches given prefix for Paarl', function(){
     var callReg = RegistrationFactory();
 
     assert.equal(callReg.additionReg('CJ 8457'), true);
@@ -91,17 +91,24 @@ describe('Mapping of Registrations numbers', function(){
     assert.deepEqual(['CA 123'], callReg.regMap());
     assert.deepEqual(['CY 123', 'CY 321'], callReg2.regMap());
   });
-  it('should map registrations from CA only', function(){
+  it('should map registrations from CA, CJ, CAW & CY only', function(){
     var callReg = RegistrationFactory()
 
     callReg.additionReg("CA 123")
     callReg.additionReg("CZ 123")
 
     assert.deepEqual(callReg.regMap(), ['CA 123'])
+
+    var callReg2 = RegistrationFactory();
+
+    callReg2.additionReg("CY 156")
+    callReg2.additionReg("CV 124")
+
+    assert.deepEqual(callReg2 .regMap(), ['CY 156'])
   });
 });
 describe('Initializing Map Registration Numbers', function(){
-  it('should return initialized map of registrations', function(){
+  it('should return initialized map of All registrations', function(){
 
     var callReg = RegistrationFactory(['CA 123',
       'CY 321',
@@ -113,11 +120,20 @@ describe('Initializing Map Registration Numbers', function(){
       'CJ 451',
       'CAW 4123'])
   })
-  it('should return the registration of initialized map passed into constructing function', function(){
+  it('should return the counter of available towns in registration map and exclude other towns ', function(){
     var callReg = RegistrationFactory({'CA 123' : 0});
 
     callReg.additionReg("CA 123")
+    callReg.additionReg("CY 123")
 
-    assert.deepEqual(callReg.regMap(), ['CA 123']);
-  });
+    var callReg2 = RegistrationFactory();
+
+    callReg2.additionReg("CV 123")
+    callReg2.additionReg("CJ 542")
+    callReg2.additionReg("CAW 845")
+
+    assert.deepEqual(callReg.regCounter(), 2);
+    assert.deepEqual(callReg2.regCounter(), 2)
+
+  })
 });
