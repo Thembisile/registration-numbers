@@ -25,10 +25,10 @@
   li   {
   border: 1px solid black;
   background-color: silver;
-  border-radius: 10px;
+  border-radius: 7px;
   padding: 10px;
   margin-top: 15px;
-  width: 20%;
+  width: 15%;
   list-style: none;
   text-align: center;
 }
