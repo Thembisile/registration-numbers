@@ -11,14 +11,16 @@ function RegistrationFactory(stored){
   }
 
   function additionReg(reg){
-    var listOfRegs = [ 'CA ', 'CJ ', 'CY ', 'CAW ']
+    var listOfRegs = [ 'CA ', 'CJ ', 'CY ', 'CL ']
 
-    if (mapOfReg[reg] === undefined) {
-      for (var i = 0; i < listOfRegs.length; i++) {
-        if (reg.startsWith(listOfRegs[i])) {
+    if (reg != ''){
+      if (mapOfReg[reg] === undefined) {
+        for (var i = 0; i < listOfRegs.length; i++) {
+          if (reg.startsWith(listOfRegs[i])) {
 
-          mapOfReg[reg] = 0;
-          return true;
+            mapOfReg[reg] = 0;
+            return true;
+          }
         }
       }
       return false;

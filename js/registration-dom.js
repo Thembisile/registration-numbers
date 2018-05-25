@@ -10,7 +10,7 @@ var callFactory = RegistrationFactory(storage);
 counter.innerHTML = Object.keys(storage).length
 
 function regCreate(registration){
-  var createList = document.createElement('li');
+  let createList = document.createElement('li');
   createList.textContent = registration;
   displayElem.appendChild(createList);
 }
@@ -25,7 +25,7 @@ function displayRegistration(){
     regCreate(inputValue);
   }
   else {
-    document.querySelector('.alert').innerHTML = "Please enter a valid registration, <br> <code> e.g : CA 123-542 or ca 123."
+    document.querySelector('.alert').innerHTML = "Please enter a valid registration for available towns only, <br> <code> e.g : CA 123-542 or ca 123. 'CA, CY, CL & CJ' "
   }
   counter.innerHTML = callFactory.regCounter();
 }
@@ -50,8 +50,10 @@ window.addEventListener('load', function(){
 });
 
 townSelect.addEventListener('change', function(){
-  var selectValue = callFactory.filterByTown(townSelect.value);
+
   displayElem.innerHTML = '';
+  var selectValue = callFactory.filterByTown(townSelect.value);
+
   if (selectValue.length > 0) {
     for (var i = 0; i < selectValue.length; i++) {
       regCreate(selectValue[i]);
@@ -62,7 +64,7 @@ townSelect.addEventListener('change', function(){
     document.querySelector('.alert').innerHTML = 'Sorry, nothing to display for selected town! <br> <code> Add Registration ';
   }
 });
-//
-// registrationElem.addEventListener('click', function(){
-//   document.querySelector('.alert').innerHTML = '';
-// });
+
+registrationElem.addEventListener('click', function(){
+  document.querySelector('.alert').innerHTML = '';
+});

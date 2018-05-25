@@ -1,4 +1,4 @@
-describe('Test Registration Numbers Widget', function(){
+describe('Registration Numbers', function(){
   it('should return true if registration matches given prefix for Cape Town', function(){
     var callReg = RegistrationFactory();
 
@@ -12,7 +12,7 @@ describe('Test Registration Numbers Widget', function(){
   it('should return true if town matches given prefix for George', function(){
     var callReg = RegistrationFactory();
 
-    assert.equal(callReg.additionReg('CAW 8745'), true)
+    assert.equal(callReg.additionReg('CL 8745'), true)
   });
   it('should return true if town matches given prefix for Paarl', function(){
     var callReg = RegistrationFactory();
@@ -26,37 +26,56 @@ describe('Test Registration Numbers Widget', function(){
 
     assert.equal(false, callReg.getRegistry());
   });
+})
+describe('Filtering registration for Selected Town', function(){
   it('should return true for registration of filtered town on display', function(){
     var callReg = RegistrationFactory();
     var callReg2 = RegistrationFactory();
     var callReg3 = RegistrationFactory();
 
-    callReg.filterByTown("Cape Town");
-    callReg2.filterByTown("Geeorge");
-    callReg3.filterByTown("Paarl");
+    callReg.filterByTown("CA ");
+    callReg2.filterByTown("CL ");
+    callReg3.filterByTown("CJ ");
 
     assert.equal(true, callReg.additionReg('CA 1234'));
-    assert.equal(true, callReg2.additionReg('CAW 125'));
+    assert.equal(true, callReg2.additionReg('CL 125'));
     assert.equal(true, callReg3 .additionReg('CJ 87945'));
-  })
-  it('sets the registration numbers and adds them to a map and return the map ', function(){
-    var callReg = RegistrationFactory();
-
-    callReg.additionReg("CA 123");
-    callReg.additionReg("CY 321")
-
-    assert.deepEqual(['CA 123', 'CY 321'], callReg.regMap());
   });
   it('should return all registration numbers when filtering "ALL" ', function(){
     var callReg =RegistrationFactory();
 
     callReg.additionReg('CA 123');
-    callReg.additionReg('CAW 123');
+    callReg.additionReg('CL 123');
     callReg.additionReg('CY 123');
     callReg.additionReg('CJ 123');
 
-    assert.deepEqual(callReg.filterByTown('All'), ['CA 123', 'CAW 123', 'CY 123', 'CJ 123'])
+    assert.deepEqual(callReg.filterByTown('All'), ['CA 123', 'CL 123', 'CY 123', 'CJ 123'])
   });
+  it('should return CJ registrations only, if filtered for Paarl, and CL registrations if filtered for George', function(){
+    var callReg = RegistrationFactory();
+
+    callReg.additionReg("CJ 1235");
+    callReg.additionReg("CL 2659");
+
+    var callReg2 = RegistrationFactory();
+
+    callReg2.additionReg('CL 123');
+    callReg2.additionReg('CY 541')
+
+    assert.deepEqual(callReg.filterByTown('CJ '), ['CJ 1235']);
+    assert.deepEqual(callReg2.filterByTown('CL '), ['CL 123'])
+  })
+  it('should return filtered registration for George', function(){
+    var callReg2 = RegistrationFactory();
+
+    callReg2.additionReg('CL 123');
+    callReg2.additionReg('CA 123');
+    callReg2.additionReg('CL 321');
+
+    assert.deepEqual(callReg2.filterByTown("CL "), ['CL 123', 'CL 321'])
+  })
+});
+describe('Mapping of Registrations numbers', function(){
   it('should not include a registration twice into the map ', function(){
     var callReg = RegistrationFactory();
 
@@ -73,17 +92,24 @@ describe('Test Registration Numbers Widget', function(){
     assert.deepEqual(['CY 123', 'CY 321'], callReg2.regMap());
   });
 });
-describe('Initializing the Map Registration Numbers', function(){
+describe('Initializing Map Registration Numbers', function(){
   it('should return initialized map of registrations', function(){
 
     var callReg = RegistrationFactory(['CA 123',
       'CY 321',
       'CJ 451',
-      'CAW 4123']);
+      'CL 4123']);
 
     assert.deepEqual(callReg.regMap(), ['CA 123',
       'CY 321',
       'CJ 451',
-      'CAW 4123'])
+      'CL 4123'])
   })
-})
+  it('should return the registration of initialized map passed into constructing function', function(){
+    var callReg = RegistrationFactory({'CA 123' : 0});
+
+    callReg.additionReg("CA 123")
+
+    assert.deepEqual(callReg.regMap(), ['CA 123']);
+  });
+});
