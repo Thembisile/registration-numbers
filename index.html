@@ -10,10 +10,21 @@
 
 <body>
 
-  <div class="container">
+  <div class="container" style="background-color:Beige">
     <div class="row">
       <div class="six columns" id="header-note">
         <h2> Registration Numbers</h2>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="three columns">
+        <div id="displayCount"> <strong>Reg. Numbers Added :</strong>
+          <span class=""> <span class="registrationCount"></span> </span>
+        </div>
+      </div>
+      <div class="three columns">
+        <div id="displayCount2"> <strong>Reg. Numbers Max : 5</strong></div>
       </div>
     </div>
 
@@ -23,17 +34,15 @@
 
     <div class="row">
       <div class="five columns" id="textFieldAndBtn">
-        <span class=""> <span class="alert"></span> </span>
         <input type="text" class="registrationNum" name="" value="">
         <button class="button-primary addRegBtn" on type="button" name="button">Add</button>
         <button class="button-primary clearRegBtn" on type="button" name="button">Clear</button>
+        <span class=""> <span class="alert"></span> </span>
       </div>
-    </div>
 
     <br>
 
-    <div class="row">
-      <div class="twelve columns"> 
+      <div class="three columns" style="margin-top:-9.0px; margin-left:0px;">
         <label for="Town: "></label>
         <select class="selectWhichTown" name="selectTown">
           <option class="selectWhichTown" value="All">All Towns</option>
@@ -46,7 +55,7 @@
     </div>
 
     <div class="row">
-      <div class="twelve columns">
+      <div class="ten columns">
         <div class="displayField">
 
         </div>

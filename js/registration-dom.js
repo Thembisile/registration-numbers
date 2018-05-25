@@ -3,9 +3,11 @@ var addBtnElem = document.querySelector('.addRegBtn');
 var townSelect = document.querySelector('.selectWhichTown');
 var displayElem = document.querySelector('.displayField');
 var clearButton = document.querySelector('.clearRegBtn')
+var counter = document.querySelector('.registrationCount')
 
 var storage = localStorage.getItem("REG_NUMBERS") ? JSON.parse(localStorage.getItem("REG_NUMBERS")) : {};
 var callFactory = RegistrationFactory(storage);
+counter.innerHTML = Object.keys(storage).length
 
 function regCreate(registration){
   var createList = document.createElement('li');
@@ -14,7 +16,7 @@ function regCreate(registration){
 }
 
 function displayRegistration(){
-  var inputValue = registrationElem.value.trim();
+  var inputValue = registrationElem.value.trim().toUpperCase();
   registrationElem.value = '';
 
   if (callFactory.additionReg(inputValue)) {
@@ -23,8 +25,9 @@ function displayRegistration(){
     regCreate(inputValue);
   }
   else {
-    document.querySelector('.alert').innerHTML = "Enter a valid registration number";
+    document.querySelector('.alert').innerHTML = "Please enter a valid registration, e.g CA 123-542 or ca 123."
   }
+  counter.innerHTML = callFactory.regCounter();
 }
 
 addBtnElem.addEventListener('click', function(){
@@ -34,8 +37,10 @@ addBtnElem.addEventListener('click', function(){
 clearButton.addEventListener('click', function(){
   displayElem.innerHTML = '';
   localStorage.clear();
+  document.querySelector('.alert').innerHTML = '';
+  counter.innerHTML = 0;
 })
- 
+
 window.addEventListener('load', function(){
   var loadMap = callFactory.regMap();
 
@@ -51,5 +56,9 @@ townSelect.addEventListener('change', function(){
     for (var i = 0; i < selectValue.length; i++) {
       regCreate(selectValue[i]);
     }
+    document.querySelector('.alert').innerHTML = '';
+  }
+  else {
+    document.querySelector('.alert').innerHTML = 'Sorry, nothing to display for selected town! <br> <code> Add Registration ';
   }
 })

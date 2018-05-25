@@ -1,6 +1,7 @@
 function RegistrationFactory(stored){
   var registry = '';
   var mapOfReg = {};
+  var regCount = 0;
 
   if (stored) {
     for (var i = 0; i < stored.length; i++) {
@@ -46,12 +47,17 @@ function RegistrationFactory(stored){
 
   function regMap() {
     return Object.keys(mapOfReg);
-  } 
+  }
+
+  function regCounter() {
+    return Object.keys(mapOfReg).length;
+  }
 
   return {
     additionReg,
     getRegistry,
     filterByTown,
-    regMap
+    regMap,
+    regCounter
   }
 }

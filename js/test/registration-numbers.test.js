@@ -26,11 +26,40 @@ describe('Test Registration Numbers Widget', function(){
 
     assert.equal(false, callReg.getRegistry());
   });
-  it('should return selected town registration number', function(){
+  it('should return true for registration of filtered town on display', function(){
+    var callReg = RegistrationFactory();
+    var callReg2 = RegistrationFactory();
+    var callReg3 = RegistrationFactory();
+
+    callReg.filterByTown("Cape Town");
+    callReg2.filterByTown("Geeorge");
+    callReg3.filterByTown("Paarl");
+
+    assert.equal(true, callReg.additionReg('CA 1234'));
+    assert.equal(true, callReg2.additionReg('CAW 125'));
+    assert.equal(true, callReg3 .additionReg('CJ 87945'));
+  })
+  it('sets the registration numbers and adds them to a map and return the map ', function(){
     var callReg = RegistrationFactory();
 
-    callReg.additionReg(['CA']);
+    callReg.additionReg("CA 123");
+    callReg.additionReg("CY 321")
 
-    assert.equal(true, callReg.getRegistry());
-  }) 
+    assert.deepEqual(['CA 123', 'CY 321'], callReg.regMap());
+  });
+  it('should not include a registration twice into the map ', function(){
+    var callReg = RegistrationFactory();
+
+    callReg.additionReg("CA 123");
+    callReg.additionReg("CA 123");
+
+    var callReg2 = RegistrationFactory();
+
+    callReg2.additionReg("CY 123")
+    callReg2.additionReg("CY 123")
+    callReg2.additionReg("CY 321")
+
+    assert.deepEqual(['CA 123'], callReg.regMap());
+    assert.deepEqual(['CY 123', 'CY 321'], callReg2.regMap());
+  }); 
 });
