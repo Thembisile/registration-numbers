@@ -47,6 +47,16 @@ describe('Test Registration Numbers Widget', function(){
 
     assert.deepEqual(['CA 123', 'CY 321'], callReg.regMap());
   });
+  it('should return all registration numbers when filtering "ALL" ', function(){
+    var callReg =RegistrationFactory();
+
+    callReg.additionReg('CA 123');
+    callReg.additionReg('CAW 123');
+    callReg.additionReg('CY 123');
+    callReg.additionReg('CJ 123');
+
+    assert.deepEqual(callReg.filterByTown('All'), ['CA 123', 'CAW 123', 'CY 123', 'CJ 123'])
+  });
   it('should not include a registration twice into the map ', function(){
     var callReg = RegistrationFactory();
 
@@ -61,5 +71,19 @@ describe('Test Registration Numbers Widget', function(){
 
     assert.deepEqual(['CA 123'], callReg.regMap());
     assert.deepEqual(['CY 123', 'CY 321'], callReg2.regMap());
-  }); 
+  });
 });
+describe('Initializing the Map Registration Numbers', function(){
+  it('should return initialized map of registrations', function(){
+
+    var callReg = RegistrationFactory(['CA 123',
+      'CY 321',
+      'CJ 451',
+      'CAW 4123']);
+
+    assert.deepEqual(callReg.regMap(), ['CA 123',
+      'CY 321',
+      'CJ 451',
+      'CAW 4123'])
+  })
+})

@@ -35,10 +35,10 @@ addBtnElem.addEventListener('click', function(){
 });
 
 clearButton.addEventListener('click', function(){
-  displayElem.innerHTML = '';
-  localStorage.clear();
+  localStorage.removeItem('REG_NUMBERS');
   document.querySelector('.alert').innerHTML = '';
   counter.innerHTML = 0;
+  window.location.reload();
 })
 
 window.addEventListener('load', function(){
@@ -61,4 +61,8 @@ townSelect.addEventListener('change', function(){
   else {
     document.querySelector('.alert').innerHTML = 'Sorry, nothing to display for selected town! <br> <code> Add Registration ';
   }
-})
+});
+//
+// registrationElem.addEventListener('click', function(){
+//   document.querySelector('.alert').innerHTML = '';
+// });
