@@ -25,7 +25,7 @@ function displayRegistration(){
     regCreate(inputValue);
   }
   else {
-    document.querySelector('.alert').innerHTML = "Please enter a valid registration, e.g CA 123-542 or ca 123."
+    document.querySelector('.alert').innerHTML = "Please enter a valid registration, <br> <code> e.g : CA 123-542 or ca 123."
   }
   counter.innerHTML = callFactory.regCounter();
 }
