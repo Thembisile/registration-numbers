@@ -26,30 +26,17 @@ describe('Registration Numbers', function(){
 
     assert.equal(false, callReg.getRegistry());
   });
-})
+});
 describe('Filtering registration for Selected Town', function(){
-  it('should return true for registration of filtered town on display', function(){
+  it('should return all registration numbers when filtering the option for "ALL" ', function(){
     var callReg = RegistrationFactory();
-    var callReg2 = RegistrationFactory();
-    var callReg3 = RegistrationFactory();
-
-    callReg.filterByTown("CA ");
-    callReg2.filterByTown("CAW ");
-    callReg3.filterByTown("CJ ");
-
-    assert.equal(true, callReg.additionReg('CA 1234'));
-    assert.equal(true, callReg2.additionReg('CAW 125'));
-    assert.equal(true, callReg3 .additionReg('CJ 87945'));
-  });
-  it('should return all registration numbers when filtering "ALL" ', function(){
-    var callReg =RegistrationFactory();
 
     callReg.additionReg('CA 123');
     callReg.additionReg('CAW 123');
     callReg.additionReg('CY 123');
     callReg.additionReg('CJ 123');
 
-    assert.deepEqual(callReg.filterByTown('All'), ['CA 123', 'CAW 123', 'CY 123', 'CJ 123'])
+    assert.deepEqual(callReg.filterByTown('All '), ['CA 123', 'CAW 123', 'CY 123', 'CJ 123'])
   });
   it('should return CJ registrations only, if filtered for Paarl, and CAW registrations if filtered for George', function(){
     var callReg = RegistrationFactory();
@@ -64,19 +51,26 @@ describe('Filtering registration for Selected Town', function(){
 
     assert.deepEqual(callReg.filterByTown('CJ '), ['CJ 1235']);
     assert.deepEqual(callReg2.filterByTown('CAW '), ['CAW 123'])
-  })
-  it('should return filtered registration for George', function(){
+  });
+  it('should return filtered registration for Cape Town and Bellville and does not repeat a registration', function(){
+    var callReg = RegistrationFactory();
+
+    callReg.additionReg('CAW 123');
+    callReg.additionReg('CA 123');
+    callReg.additionReg('CAW 321');
+
     var callReg2 = RegistrationFactory();
 
-    callReg2.additionReg('CAW 123');
-    callReg2.additionReg('CA 123');
-    callReg2.additionReg('CAW 321');
+    callReg.additionReg('CY 321');
+    callReg.additionReg('CJ 123');
+    callReg.additionReg('CY 321');
 
-    assert.deepEqual(callReg2.filterByTown("CAW "), ['CAW 123', 'CAW 321'])
-  })
+    assert.deepEqual(callReg.filterByTown("CA "), ['CA 123'])
+    assert.deepEqual(callReg.filterByTown("CY "), ['CY 321'])
+  });
 });
 describe('Mapping of Registrations numbers', function(){
-  it('should not include a registration twice into the map ', function(){
+  it('should not include a registration more than once into the map ', function(){
     var callReg = RegistrationFactory();
 
     callReg.additionReg("CA 123");
@@ -119,21 +113,21 @@ describe('Initializing Map Registration Numbers', function(){
       'CY 321',
       'CJ 451',
       'CAW 4123'])
-  })
-  it('should return the counter of available towns in registration map and exclude other towns ', function(){
-    var callReg = RegistrationFactory({'CA 123' : 0});
+  });
+  it('should return the counter of available towns in registration map and exclude count for other towns ', function(){
+    var callReg = RegistrationFactory({'CA 123' : 0}, {'CV 123':0});
 
     callReg.additionReg("CA 123")
-    callReg.additionReg("CY 123")
+    callReg.additionReg("CV 123")
 
-    var callReg2 = RegistrationFactory();
+    var callReg2 = RegistrationFactory({'CJ 542':0}, {'CAW 845':0}, {'CV 123':0});
 
     callReg2.additionReg("CV 123")
     callReg2.additionReg("CJ 542")
     callReg2.additionReg("CAW 845")
 
-    assert.deepEqual(callReg.regCounter(), 2);
+    assert.deepEqual(callReg.regCounter(), 1);
     assert.deepEqual(callReg2.regCounter(), 2)
 
-  })
+  });
 });

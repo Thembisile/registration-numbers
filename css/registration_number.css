@@ -16,6 +16,7 @@
 
 #textFieldAndBtn {
   margin-top: 20px;
+  margin-left: 5px;
 }
 
 #optionMenu {
@@ -28,9 +29,11 @@
   border-radius: 7px;
   padding: 10px;
   margin-top: 15px;
-  width: 15%;
+  margin-left: 5px;
+  width: 20%;
   list-style: none;
   text-align: center;
+  display: inline-block;
 }
 
 .selectWhichTown {
@@ -40,4 +43,8 @@
 
 .alert {
   color: red;
+}
+
+.displayField {
+  
 }

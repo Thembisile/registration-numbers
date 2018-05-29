@@ -35,7 +35,13 @@ function RegistrationFactory(stored){
 
     var registrationNums = Object.keys(mapOfReg);
 
-    if (town === "All") {
+    if (town === "Filter ") {
+      var nothing = registrationNums.clear();
+
+      return nothing;
+    }
+
+    if (town === "All ") {
       return registrationNums;
     }
     var filterTown = registrationNums.filter(function(Num, storedNum){
