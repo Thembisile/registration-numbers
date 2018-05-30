@@ -82,8 +82,8 @@ describe('Mapping of Registrations numbers', function(){
     callReg2.additionReg("CY 123")
     callReg2.additionReg("CY 321")
 
-    assert.deepEqual(['CA 123'], callReg.regMap());
-    assert.deepEqual(['CY 123', 'CY 321'], callReg2.regMap());
+    assert.deepEqual(['CA 123'], callReg.mapRegistration());
+    assert.deepEqual(['CY 123', 'CY 321'], callReg2.mapRegistration());
   });
   it('should map registrations from CA, CJ, CAW & CY only', function(){
     var callReg = RegistrationFactory()
@@ -91,14 +91,14 @@ describe('Mapping of Registrations numbers', function(){
     callReg.additionReg("CA 123")
     callReg.additionReg("CZ 123")
 
-    assert.deepEqual(callReg.regMap(), ['CA 123'])
+    assert.deepEqual(callReg.mapRegistration(), ['CA 123'])
 
     var callReg2 = RegistrationFactory();
 
     callReg2.additionReg("CY 156")
     callReg2.additionReg("CV 124")
 
-    assert.deepEqual(callReg2 .regMap(), ['CY 156'])
+    assert.deepEqual(callReg2 .mapRegistration(), ['CY 156'])
   });
 });
 describe('Initializing Map Registration Numbers', function(){
@@ -109,7 +109,7 @@ describe('Initializing Map Registration Numbers', function(){
       'CJ 451',
       'CAW 4123']);
 
-    assert.deepEqual(callReg.regMap(), ['CA 123',
+    assert.deepEqual(callReg.mapRegistration(), ['CA 123',
       'CY 321',
       'CJ 451',
       'CAW 4123'])

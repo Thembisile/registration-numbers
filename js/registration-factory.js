@@ -53,7 +53,7 @@ function RegistrationFactory(stored){
     return filterTown;
   }
 
-  function regMap() {
+  function mapRegistration() {
     return Object.keys(mapOfReg);
   }
 
@@ -65,7 +65,7 @@ function RegistrationFactory(stored){
     additionReg,
     getRegistry,
     filterByTown,
-    regMap,
+    mapRegistration,
     regCounter
   }
 }

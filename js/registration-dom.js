@@ -21,7 +21,7 @@ function displayRegistration(){
 
   if (callFactory.additionReg(inputValue)) {
     document.querySelector('.alert').innerHTML = '';
-    localStorage.setItem('REG_NUMBERS', JSON.stringify(callFactory.regMap()));
+    localStorage.setItem('REG_NUMBERS', JSON.stringify(callFactory.mapRegistration()));
     regCreate(inputValue);
   }
   else {
@@ -42,7 +42,7 @@ clearButton.addEventListener('click', function(){
 })
 
 window.addEventListener('load', function(){
-  var loadMap = callFactory.regMap();
+  var loadMap = callFactory.mapRegistration();
 
   for (var i = 0; i < loadMap.length; i++) {
     regCreate(loadMap[i])
