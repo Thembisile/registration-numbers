@@ -1,26 +1,25 @@
 #header-note {
   /* border: 1px solid black; */
   background-color: beige;
-  padding-left: 5px;
+  padding-left: 10px;
   padding-top: 5px;
   margin-top: 20px;
 }
 
 #displayCount {
-  padding-left: 5px;
-}
-
-#displayCount2 {
-  padding-left: -5px;
+  padding-left: 0px;
 }
 
 #textFieldAndBtn {
-  margin-top: 20px;
-  margin-left: 5px;
+  padding-left: 108px;
+}
+
+.textFieldAndBtn2 {
+  padding-left: 108px
 }
 
 #optionMenu {
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
   li   {
@@ -41,10 +40,45 @@
   color: white;
 }
 
+.selectWhichTownTwo {
+  background-color: DeepSkyBlue;
+  color: white;
+}
+
+.filter {
+  margin-left: -380px;
+  margin-top: -58px;
+}
+
+#filter2 {
+  margin-left: -380px;
+  margin-top: -58px;
+}
+
 .alert {
   color: red;
+  width: 100%
+}
+
+#alertID {
+  width: 50%
+}
+
+.alertTwo {
+  color: red;
+  padding-left:0px;
+}
+.displayFieldTwo {
+  margin-left: -6px;
 }
 
 .displayField {
-  
+  margin-left: -6px;
+}
+
+#dropDownMenu {
+}
+
+#dropDownMenu2 {
+
 }

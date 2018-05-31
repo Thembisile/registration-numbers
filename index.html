@@ -2,64 +2,91 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Registration-Numbers</title>
   <link rel="stylesheet" href="css/registration_number.css">
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+  <script type="text/x-template" class="regNumberTemplate">
+    {{#each regList}}
+     <li class='{{regClass}}'>{{this}}</li>
+    {{/each}}
+  </script>
 </head>
 
 <body>
 
-  <div class="container" style="background-color:Beige">
-    <div class="row">
-      <div class="twelve columns" id="header-note">
+  <div class="row">
+    <div class="six columns" style="text-align:center">
+      <div class="box" id="header-note">
         <h2> Registration Numbers</h2>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="six columns">
+        <h4 style="color:DeepSkyBlue">Widget Without Handlebars</h4>
+
+    <!--Regstration Number Buttons and Dropdown Menu 1-->
+
         <div id="displayCount"> <strong>Registration Numbers Added :</strong>
           <span class=""> <span class="registrationCount"></span> </span>
         </div>
-      </div>
-      <!-- <div class="three columns">
-        <div id="displayCount2"> <strong>Reg. Numbers Max : 5</strong></div>
-      </div> -->
-    </div>
+        <span> <span class="alert"></span> </span>
+        <br>
+        <div id="textFieldAndBtn">
+          <input type="text" class="registrationNum" name="" value="">
+          <button class="button-primary addRegBtn" on type="button" name="button">Add</button>
+          <button class="button-primary clearRegBtn" on type="button" name="button">Clear</button>
+        </div>
 
-    <ul class="li">
+        <div class="filter">
+          <label for="Town: "></label>
+          <select class="selectWhichTown" name="selectTown">
+            <option class="selectWhichTown" value="All ">All Towns</option>
+            <option class="selectWhichTown" value="CA ">Cape Town</option>
+            <option class="selectWhichTown" value="CJ ">Paarl</option>
+            <option class="selectWhichTown" value="CY ">Bellville</option>
+            <option class="selectWhichTown" value="CAW ">George</option>
+          </select>
+        </div>
 
-    </ul>
-
-    <div class="row">
-      <div class="three columns" id="textFieldAndBtn">
-        <input type="text" class="registrationNum" name="" value="">
-        <button class="button-primary addRegBtn" on type="button" name="button">Add</button>
-        <button class="button-primary clearRegBtn" on type="button" name="button">Clear</button>
-        <span class=""> <span class="alert"></span> </span>
-      </div>
-      <br>
-      <br>
-      <br>
-
-      <div class="three columns" style="margin-top:-4.5px; margin-left:-10px;">
-        <label for="Town: "></label>
-        <select class="selectWhichTown" name="selectTown">
-          <option class="selectWhichTown" value="All ">All Towns</option>
-          <option class="selectWhichTown" value="CA ">Cape Town</option>
-          <option class="selectWhichTown" value="CJ ">Paarl</option>
-          <option class="selectWhichTown" value="CY ">Bellville</option>
-          <option class="selectWhichTown" value="CAW ">George</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="six columns">
         <div class="displayField">
 
         </div>
+      </div>
+    </div>
+
+    <div class="six columns" style="text-align:center;">
+      <div class="box" id="header-note">
+        <h2> Registration Numbers</h2>
+        <h4 style="color:DeepSkyBlue">Widget Using Handlebars</h4>
+
+      <!--Regstration Number Buttons and Dropdown Menu 2-->
+
+        <div id="displayCount"> <strong>Registration Numbers Added :</strong>
+          <span class=""> </span> <span class="registrationCountTwo"></span>
+        </div>
+        <span class=""> <span class="alertTwo"></span> </span>
+        <br>
+        <div class="textFieldAndBtn2">
+          <input type="text" class="registrationNumTwo" name="textField" value="">
+          <button class="button-primary addRegBtnTwo" on type="button" name="button">Add</button>
+          <button class="button-primary clearRegBtnTwo" on type="button" name="button">Clear</button>
+        </div>
+
+        <div id="filter2">
+          <label for="Town: "></label>
+          <select class="selectWhichTownTwo" name="selectTown">
+            <option class="selectWhichTownTwo" value="All ">All Towns</option>
+            <option class="selectWhichTownTwo" value="CA ">Cape Town</option>
+            <option class="selectWhichTownTwo" value="CJ ">Paarl</option>
+            <option class="selectWhichTownTwo" value="CY ">Bellville</option>
+            <option class="selectWhichTownTwo" value="CAW ">George</option>
+          </select>
+        </div>
+
+      <div class="displayFieldTwo">
+
+          </div>
       </div>
     </div>
 
@@ -69,6 +96,7 @@
 
 <script src="js/registration-factory.js" charset="utf-8"></script>
 <script src="js/registration-dom.js" charset="utf-8"></script>
+<script src="js/registration-dom2.js" charset="utf-8"></script>
 
 
 </html>
