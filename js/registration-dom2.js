@@ -27,7 +27,7 @@ function displayRegistrationTwo(){
     });
   }
   else {
-    document.querySelector('.alertTwo').innerHTML = "Please enter a valid registration of available towns only. <br> <code> e.g : CA 123-542 or ca 123. Only from: 'CA, CY, CL & CJ'. " ;
+    document.querySelector('.alertTwo').innerHTML = "Please enter a valid registration of available towns only. <br> <code> e.g : CA 123-542 or ca 123.</code> <br> <code> Only from: 'CA, CY, CAW & CJ'. " ;
   }
   counter2.innerHTML = callFactory2.regCounter();
 }

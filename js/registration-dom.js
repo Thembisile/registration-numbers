@@ -25,7 +25,7 @@ function displayRegistration(){
     regCreate(inputValue);
   }
   else {
-    document.querySelector('.alert').innerHTML = "Please enter a valid registration of available towns only. <br> <code> e.g : CA 123-542 or ca 123. Only from: 'CA, CY, CL & CJ'. "
+    document.querySelector('.alert').innerHTML = "Please enter a valid registration of available towns only. <br> <code> e.g : CA 123-542 or ca 123.</code> <br> <code> Only from: 'CA, CY, CAW & CJ'. "
   }
   counter.innerHTML = callFactory.regCounter();
 }

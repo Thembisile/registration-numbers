@@ -44,12 +44,6 @@
   color: white;
 }
 
-.filter {
-}
-
-#filter2 {
-}
-
 .alert {
   color: red;
   width: 100%
@@ -71,9 +65,9 @@
   margin-left: -6px;
 }
 
-#dropDownMenu {
-}
-
-#dropDownMenu2 {
-
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
 }
