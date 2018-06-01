@@ -11,11 +11,10 @@
 }
 
 #textFieldAndBtn {
-  padding-left: 108px;
 }
 
 .textFieldAndBtn2 {
-  padding-left: 108px
+
 }
 
 #optionMenu {
@@ -46,13 +45,9 @@
 }
 
 .filter {
-  margin-left: -380px;
-  margin-top: -58px;
 }
 
 #filter2 {
-  margin-left: -380px;
-  margin-top: -58px;
 }
 
 .alert {
